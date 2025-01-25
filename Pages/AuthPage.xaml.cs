@@ -47,14 +47,16 @@ namespace AdService.Pages
                 var users = db.Users
                     .AsNoTracking()
                     .FirstOrDefault(u => u.UserLogin == login && u.UserPassword == password);
-                if(users == null)
+                if (users == null)
                 {
                     MessageBox.Show("Пользователь с такими данными не найден!");
                     return;
                 }
-                MessageBox.Show("Авторизация успешна!");
-                NavigationService?.Navigate(new UserPage());
-       
+                else
+                {
+                    MessageBox.Show("Авторизация успешна!");
+                    NavigationService?.Navigate(new UserPage(users));
+                }
             }
         }
 

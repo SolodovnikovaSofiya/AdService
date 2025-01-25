@@ -1,0 +1,39 @@
+﻿<Page x:Class="AdService.Pages.AddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AdService.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="AddPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Right" Height="370" VerticalAlignment="Center" Width="76" Margin="0,15,0,0">
+            <Label Content="Название" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <Label Content="Описание" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <Label Content="Цена" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <Label Content="Категория" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <Label Content="Тип" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <Label Content="Статус" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <Label Content="Город" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <Label Content="Фото" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,15,0,0"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Width="193" Grid.Column="1" VerticalAlignment="Center" Margin="0,15,0,0" >
+            <TextBox x:Name="TitleTextBox" Text="{Binding AdTitle, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="170" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <TextBox x:Name="DescriptionTextBox" TextWrapping="Wrap" Text="{Binding AdDescription, UpdateSourceTrigger=PropertyChanged}" Width="170" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <TextBox x:Name="PriceTextBox" TextWrapping="Wrap" Text="{Binding AdPrice, UpdateSourceTrigger=PropertyChanged}" Width="170" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <ComboBox x:Name="CategoryComboBox" Width="170" DisplayMemberPath="CategoryName" SelectedValuePath="CategoryId" SelectedValue="{Binding CategoryId, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <ComboBox x:Name="TypeComboBox" SelectedValuePath="TypeId" Width="170" DisplayMemberPath="TypeName" HorizontalAlignment="Left" SelectedValue="{Binding TypeId, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <ComboBox x:Name="StatusComboBox" SelectedValuePath="StatusId" Width="170"  DisplayMemberPath="StatusName" SelectedValue="{Binding Statuid, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <ComboBox x:Name="CityComboBox" SelectedValuePath="CityId" Width="170" DisplayMemberPath="CityName" HorizontalAlignment="Left" SelectedValue="{Binding CityId, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <TextBox x:Name="PhotoTextBox" TextWrapping="Wrap" Text="{Binding Photo, UpdateSourceTrigger=PropertyChanged}" Width="170" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,15,0,0"/>
+            <Button x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left" Click="ButtonSave_Click" VerticalAlignment="Center" Margin="16,15,16,16"/>
+        </StackPanel>
+        <Button x:Name="BackButton" Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ButtonCancel_Click" Margin="16,16,0,0"/>
+    </Grid>
+</Page>

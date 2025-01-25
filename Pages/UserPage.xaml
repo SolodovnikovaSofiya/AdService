@@ -6,9 +6,76 @@
       xmlns:local="clr-namespace:AdService.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="900"
-      Title="Страница пользователя">
+      Title="Страница пользователя"
+      IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid Background="White">
-        
+        <ListView Name="ListAds" Margin="40,90,40,90" MouseDoubleClick="ListAds_MouseDoubleClick"
+           ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="2" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="300" Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="230"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="{Binding AdTitle}" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,2,0,2"/>
+
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,2,0,2">
+                            <TextBlock Text="{Binding Users.UserLogin}" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding AdDatePublication, StringFormat='{}{0:dd/MM/yyyy}'}" Margin="10,0,5,0"/>
+                            <TextBlock Text="{Binding Cities.CityName}" Margin="10,0,5,0"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,2,0,2">
+                            <TextBlock Text="{Binding Categories.CategoryName}" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding Types.TypeName}" Margin="0,0,5,0"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,2,0,2">
+                            <TextBlock Text="{Binding Statuses.StatusName}"/>
+                        </StackPanel>
+
+                        <Image Grid.Row="4" Width="250" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="0,5,0,5">
+                            <Image.Source>
+                                <Binding Path="Photo">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>C:\Users\user\source\repos\AdService\images\package_box_defolt.png</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+
+                        <TextBlock Grid.Row="5" Text="{Binding AdPrice}" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,2,0,2"/>
+
+                        <TextBlock Grid.Row="6" Text="{Binding AdDescription}" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0,2,0,2"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ButtonBack_Click"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <TextBlock Text="Полученная прибыль: " HorizontalAlignment="Left" Height="15" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TextBoxProfit" Text="" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Margin="5,0,0,0"/>
+
+            <CheckBox x:Name="CheckBoxOnlyCompleted" Content="Завершенные объявления" Height="20" Width="180" Checked="CheckBoxOnlyCompleted_Checked" Unchecked="CheckBoxOnlyCompleted_UnChecked" FontSize="14" FontFamily="Tw Cen MT" Margin="5,5,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Удалить" Click="ButtonDel_Click"/>
+            <Button Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="ButtonAdd_Click"/>
+
+        </StackPanel>
+
     </Grid>
 </Page>

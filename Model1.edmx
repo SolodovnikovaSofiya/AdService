@@ -293,7 +293,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ADSystemDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ads" EntityType="Self.Ads" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="Cities" EntityType="Self.Cities" />
@@ -327,7 +327,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ADSystemDBModelContainer" CdmEntityContainer="ADSystemDBEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ADSystemDBModelContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Ads">
             <EntityTypeMapping TypeName="ADSystemDBModel.Ads">
               <MappingFragment StoreEntitySet="Ads">
